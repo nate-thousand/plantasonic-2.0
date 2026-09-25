@@ -1,0 +1,147 @@
+// Everything visible comes from the design system. The pl-* rules below are layout only:
+// where the stage, panel and keys sit on a phone and on a laptop.
+@import 'plantasonic-design-system/scss/bootstrap-theme.scss';
+@import 'bootstrap/scss/bootstrap';
+@import 'plantasonic-design-system/scss/bootstrap-components.scss';
+@import 'plantasonic-design-system/scss/bootstrap-utilities.scss';
+@import 'plantasonic-design-system/scss/plantasonic-components.scss';
+@import 'plantasonic-design-system/scss/editorial.scss';
+
+html, body { margin: 0; height: 100%; overscroll-behavior: none; -webkit-font-smoothing: antialiased; }
+body { touch-action: manipulation; }
+
+.pl-app {
+  height: 100dvh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.pl-topbar { flex: 0 0 auto; }
+
+.pl-main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: minmax(9rem, 1fr) auto auto;
+  grid-template-areas: 'stage' 'panel' 'play';
+}
+
+// ── Stage ───────────────────────────────────────────────────────────────────
+.pl-stage {
+  grid-area: stage;
+  position: relative;
+  min-height: 0;
+  background: var(--ds-color-surface-stage);
+  border-bottom: 1px solid var(--ds-color-border-subtle);
+
+  &__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+}
+
+// ── Panel: species, transport, ecology ──────────────────────────────────────
+.pl-panel {
+  grid-area: panel;
+  padding: 0.75rem 1rem 0.5rem;
+}
+
+.pl-species {
+  padding-bottom: 0.5rem;
+  .ps-listbar__filters { gap: 1rem; }
+}
+
+.pl-transport { min-width: 0; }
+.pl-readout { min-width: 6.5rem; padding: 0 0.75rem; }
+
+.pl-controls {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+  height: 8.5rem;
+}
+
+// Each ecology control is a vertical fader with its name underneath.
+.pl-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+  height: 100%;
+
+  &__label { order: 2; white-space: nowrap; max-width: 100%; font-size: var(--ds-font-size-overline); letter-spacing: var(--ds-letter-spacing-label); }
+  .ps-slider--vertical { flex: 1; height: auto; min-height: 0; width: var(--ps-touch-target); }
+  .ps-slider--vertical .ps-slider__track { width: 0.75rem; }
+}
+
+.pl-app[data-labels='off'] .pl-control__label { visibility: hidden; }
+
+// The site hides the transport readout on narrow screens; the instrument keeps it.
+.pl-transport .ps-transport__readout { display: flex; }
+
+// ── Play: wheel + keys ──────────────────────────────────────────────────────
+.pl-play {
+  grid-area: play;
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem calc(0.5rem + env(safe-area-inset-bottom, 0));
+  height: 10rem;
+}
+
+.pl-wheel {
+  .pl-control { height: 100%; align-items: center; }
+  .pl-control__label { order: 2; }
+  .ps-slider--vertical { height: 100%; flex: 1; width: var(--ps-touch-target); }
+}
+
+.pl-keys {
+  height: 100%;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+
+  .ps-piano__key { position: relative; cursor: pointer; }
+  // Hardware black keys, whatever the theme.
+  .ps-piano__key--black { height: 58%; background: var(--ds-color-surface-stage); border-color: var(--ds-color-surface-stage); }
+  .ps-piano__key--active { background: var(--ds-color-primary); border-color: var(--ds-color-primary); }
+  &__name {
+    position: absolute;
+    left: 0; right: 0; bottom: 0.4rem;
+    text-align: center;
+    font-size: var(--ds-font-size-caption);
+    letter-spacing: var(--ds-letter-spacing-caps);
+    color: var(--ds-color-text-muted);
+    pointer-events: none;
+  }
+}
+
+// ── Start gate ──────────────────────────────────────────────────────────────
+.pl-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ds-color-surface-app);
+  cursor: pointer;
+  transition: opacity var(--ds-transition-slow) var(--ds-ease-out);
+
+  &__inner { display: flex; flex-direction: column; align-items: center; padding: 2rem; max-width: 26rem; }
+  &--away { opacity: 0; pointer-events: none; }
+}
+
+// ── Laptop: stage left, panel right, keys across the bottom ─────────────────
+@media (min-width: 992px) {
+  .pl-main {
+    grid-template-columns: 1fr 22rem;
+    grid-template-rows: 1fr auto;
+    grid-template-areas: 'stage panel' 'play play';
+  }
+  .pl-stage { border-bottom: 0; border-right: 1px solid var(--ds-color-border-subtle); }
+  .pl-panel { padding: 1.25rem 1.5rem; overflow-y: auto; }
+  .pl-species { flex-direction: column; align-items: stretch; gap: 1rem; padding-bottom: 1.25rem; }
+  .pl-controls { height: 12rem; gap: 0.75rem; }
+  .pl-play { height: 13rem; grid-template-columns: 4.5rem 1fr; padding: 0.5rem 1rem 1rem; border-top: 1px solid var(--ds-color-border-subtle); }
+}

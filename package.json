@@ -1,0 +1,24 @@
+{
+  "name": "plantasonic",
+  "version": "2.0.0-alpha.1",
+  "private": true,
+  "description": "Plantasonic 2.0 — a played instrument on Plantasia Sound Engine: keys, a mod wheel, a species switch, on a phone or a laptop.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 5177 --strictPort",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --port 5177 --strictPort",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "ascii-visual-engine": "github:nate-thousand/ascii-visual-engine#v0.4.1",
+    "bootstrap": "5.0.2",
+    "plantasia-sound-engine": "github:nate-thousand/plantasia-sound-engine#1.2.1",
+    "plantasonic-design-system": "file:../plantasonic-design-system"
+  },
+  "devDependencies": {
+    "sass": "^1.89.2",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.7"
+  }
+}
