@@ -102,8 +102,6 @@ body { touch-action: manipulation; }
   -webkit-user-select: none;
 
   .ps-piano__key { position: relative; cursor: pointer; }
-  // Hardware black keys, whatever the theme.
-  .ps-piano__key--black { height: 58%; background: var(--ds-color-surface-stage); border-color: var(--ds-color-surface-stage); }
   .ps-piano__key--active { background: var(--ds-color-primary); border-color: var(--ds-color-primary); }
   &__name {
     position: absolute;
