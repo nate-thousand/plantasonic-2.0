@@ -22,7 +22,7 @@ Touch anywhere to start (audio needs a gesture). Keys are on screen and on the c
 
 | Package | Pin | Why |
 | --- | --- | --- |
-| `plantasia-sound-engine` | `github:…#1.2.1` | The brief's pin. Installing from git runs the engine's `prepare` build |
+| `plantasia-sound-engine` | `github:…#1.2.3` | The brief's pin. Installing from git runs the engine's `prepare` build |
 | `ascii-visual-engine` | `github:…#v0.4.1` | Same pattern; `prepare` builds `dist/` |
 | `plantasonic-design-system` | `file:../plantasonic-design-system` | Sibling checkout while the instrument components are still being documented; pin a tag (`v1.3.1` or later) for a standalone checkout |
 

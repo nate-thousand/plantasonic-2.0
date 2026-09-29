@@ -13,7 +13,7 @@
   "dependencies": {
     "ascii-visual-engine": "github:nate-thousand/ascii-visual-engine#v0.4.1",
     "bootstrap": "5.0.2",
-    "plantasia-sound-engine": "github:nate-thousand/plantasia-sound-engine#1.2.1",
+    "plantasia-sound-engine": "github:nate-thousand/plantasia-sound-engine#1.2.3",
     "plantasonic-design-system": "file:../plantasonic-design-system"
   },
   "devDependencies": {

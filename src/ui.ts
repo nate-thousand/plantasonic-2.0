@@ -117,7 +117,7 @@ export function render(instrument: Instrument): string {
             </select>
           </div>
           <hr class="ps-hairline my-4" />
-          <p class="small text-secondary mb-0">Plantasonic 2.0 on Plantasia Sound Engine 1.2.1. Growth, bloom, roots, mold and bacteria shape whatever you play; the wheel opens the filter.</p>
+          <p class="small text-secondary mb-0">Plantasonic 2.0 on Plantasia Sound Engine 1.2.3. Growth, bloom, roots, mold and bacteria shape whatever you play; the wheel opens the filter.</p>
         </div>
       </div>
 
